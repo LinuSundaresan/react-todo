@@ -50,6 +50,7 @@ body{
   overflow-y: scroll;
   background-color: #FFF;
   border-radius: 4px ;
+  position: relative;
 }
 .task-container::-webkit-scrollbar {
   display: none;
@@ -67,9 +68,30 @@ h1 {
 }
 
 .task-container .todo {
+  display: flex;
+  width: 90%;
   border: 1px solid #FB773C;
-  margin: 10px 5px;
+  margin: 10px auto;
   padding: 10px;
   border-radius: 8px;
+  align-items: center;
+  gap : 10px;
+  justify-content: start;
+  position: relative;
 }
+
+.task-container .todo:hover {
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+}
+
+.task-container .todo .fa-trash{
+  position: absolute;
+  right: 20px;
+}
+
+.task-container .todo .todoItemText {
+  margin-left: 8px;
+}
+
+
 
