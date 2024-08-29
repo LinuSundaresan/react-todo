@@ -2,6 +2,8 @@ import './App.css';
 
 import Header from './components/Header/Header';
 
+import Navbar from './components/Navbar/Navbar';
+
 import { useState } from 'react';
 
 const App = () => {
@@ -9,6 +11,8 @@ const App = () => {
   const [userInput , setUserInput] = useState('');
 
   const [todo , setTodo] = useState([]);
+
+  const [option, setOption] = useState(['All']);
 
   const onUserInput = (e) => {
     setUserInput(e.target.value);
@@ -38,6 +42,20 @@ const App = () => {
     setTodo(todoCopy);
   };
 
+  const filterTodo = () => {
+    if(option == 'Completed') {
+      return todo.filter(item => item.isCompleted);
+    } else if(option == 'Pending') {
+      return todo.filter(item => !item.isCompleted);
+    } else if(option == 'All') {
+      return todo;
+    }
+  };
+
+
+
+  
+
   return (
     <>
       <div className='container'>
@@ -48,16 +66,26 @@ const App = () => {
           <button onClick={saveTodo}>Add Task</button>
         </div>
       
+        <nav>
+            <a onClick={()=>setOption('All')}>All Tasks</a>
+            <a onClick={()=>setOption('Pending')}>Pending</a>
+            <a onClick={()=>setOption('Completed')}>Completed</a>
+        </nav>
 
         <div className="task-header">
           <h1>Tasks</h1>
         </div>
         
         <div className="task-container">
-        {todo.map((item,index) =>{
+        {filterTodo().map((item,index) =>{
             return (<><div className="todo">
               <p className='todoNumber'>{index+1}. </p>
-              <input type="checkbox" name="check_todo" id='check_todo' onChange={(e)=>{onCheck(index, e)}}/>
+              <input type="checkbox" 
+              name="check_todo" 
+              id='check_todo' 
+              checked={item.isCompleted}
+              onChange={(e)=>{onCheck(index, e)}} />
+
               <p className='todoItemText' style={{textDecoration : item.isCompleted? 'line-through' : 'none'}}>{item.text}</p>
               <i className="fa fa-trash" onClick={()=>{
                deleteTask(index)}}></i>
