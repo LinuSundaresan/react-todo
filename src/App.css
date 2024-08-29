@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: lightgray;
+}
+
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.modal input {
+  padding: 4px;
+  width: 20%;
+  background-color: transparent;
+  border: 1px solid gray;
+  transition: 0.5s;
+}
+
+.modal input:hover {
+  margin-top: 8px;
+  transform: scale(1.5);
+}
+
+.modal input:hover + button {
+  margin-left: 90px;
+}
+
+.modal button {
+  padding: 5px;
+  width: 4%;
+  background-color: #FB773C;
+  border: none;
+  border-radius: 4px;
+}
+
+.task-container {
+  width: 80%;
+  margin: 10px auto;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 5px;
+  height: 450px;
+  overflow-y: scroll;
+  background-color: #FFF;
+  border-radius: 4px ;
+  position: relative;
+}
+.task-container::-webkit-scrollbar {
+  display: none;
+}
+
+.task-header {
+  width: 80%;
+  margin: 10px auto;
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+h1 {
+  color: #6e6560;
+}
+
+.task-container .todo {
+  display: flex;
+  width: 90%;
+  border: 1px solid #FB773C;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+  align-items: center;
+  gap : 10px;
+  justify-content: start;
+  position: relative;
+}
+
+.task-container .todo:hover {
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+}
+
+.task-container .todo .fa-trash{
+  position: absolute;
+  right: 20px;
+}
+
+.task-container .todo .todoItemText {
+  margin-left: 8px;
+}
+
+
+
