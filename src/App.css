@@ -51,6 +51,7 @@ body{
   background-color: #FFF;
   border-radius: 4px ;
   position: relative;
+  z-index: 0;
 }
 .task-container::-webkit-scrollbar {
   display: none;
@@ -87,10 +88,75 @@ h1 {
 .task-container .todo .fa-trash{
   position: absolute;
   right: 20px;
+  color: #6e6560;
+}
+
+.task-container .todo .fa-edit{
+  position: absolute;
+  right: 50px;
+  color: #6e6560;
 }
 
 .task-container .todo .todoItemText {
   margin-left: 8px;
+}
+
+
+.layer {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.edit-box {
+  width: 400px;
+  height: 250px;
+  background-color: #FFF;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  z-index: 2;
+}
+
+.edit-box input {
+  padding: 4px;
+  width: 90%;
+  background-color: transparent;
+  border: 1px solid gray;
+  transition: 0.5s;
+  position: absolute;
+  top: 40%;
+  left: 3%;
+}
+
+.edit-box input:hover {
+  margin-top: 8px;
+  transform: scale(1.5);
+}
+
+.edit-box input:hover + button {
+  margin-left: 90px;
+}
+
+.edit-box button {
+  padding: 5px;
+  width: 30%;
+  background-color: #FB773C;
+  border: none;
+  border-radius: 4px;
+  position: absolute;
+  bottom : 10px;
+  right: 10px;
+}
+
+.edit-box .fa-xmark {
+  position: absolute;
+  top : 10px;
+  right: 10px;
 }
 
 

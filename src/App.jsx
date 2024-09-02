@@ -14,6 +14,10 @@ const App = () => {
 
   const [option, setOption] = useState(['All']);
 
+  const [showEdit , setShowEdit] = useState(false);
+
+  const [selectedTodo , setSelectedTodo] = useState(undefined);
+
   const onUserInput = (e) => {
     setUserInput(e.target.value);
     console.log(e.target.value);
@@ -35,6 +39,12 @@ const App = () => {
     todoCopy[i].isCompleted = e.target.checked;
     setTodo(todoCopy); 
   }
+
+  const editTask = (index) => {
+    setShowEdit(true);
+    console.log(todo[index].text);
+    setSelectedTodo(todo[index]);
+  };
 
   const deleteTask = (index) =>{
     const todoCopy = [...todo];
@@ -59,6 +69,14 @@ const App = () => {
   return (
     <>
       <div className='container'>
+
+        <div className='layer' style={{display : showEdit? 'block' : 'none' }} onClick={()=>{setShowEdit(false)}}></div>
+
+        <div className='edit-box'  style={{display : showEdit? 'block' : 'none' }}>
+          <i className='fa fa-xmark' onClick={()=>{setShowEdit(false)}}></i>
+          <input type="text" name='edit-todo' value = {selectedTodo+1 ? selectedTodo.text: ""} />
+          <button type="button" name="edit-button"><i className='fa fa-edit'></i>Edit Task</button>
+        </div>
         <Header/>
 
         <div className='modal'>
@@ -87,6 +105,9 @@ const App = () => {
               onChange={(e)=>{onCheck(index, e)}} />
 
               <p className='todoItemText' style={{textDecoration : item.isCompleted? 'line-through' : 'none'}}>{item.text}</p>
+
+              <i className="fa fa-edit" onClick={()=> {editTask(index)}}></i>
+
               <i className="fa fa-trash" onClick={()=>{
                deleteTask(index)}}></i>
             </div></>);
